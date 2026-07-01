@@ -487,46 +487,6 @@ thirty seconds:
 
 ## Part 9 - How the pieces fit together
 
-Here is the complete data flow, from the pet's stats to the browser
-screen:
-
-```
-Pet (in main.cpp)
-  |
-  | petPtr (pointer, set by begin())
-  v
-WirelessManager::handleRoot()
-  |
-  | calls buildStatsPage()
-  v
-WirelessManager::buildStatsPage()
-  |
-  | reads pet->getFullness(), pet->getHappy(), etc.
-  | builds HTML string with inline CSS and stat bars
-  | returns the complete page
-  v
-WirelessManager::handleRoot()
-  |
-  | server.send(200, "text/html", html)
-  v
-WebServer library
-  |
-  | sends the bytes over WiFi
-  v
-Browser on phone/laptop
-  |
-  | parses HTML, applies CSS, renders bars
-  | 3 seconds later, auto-refresh triggers another request
-  v
-(back to the top - the cycle repeats)
-```
-
-The interesting design decision here is that the page is **built from
-scratch on every request**, not cached. The pet has no filesystem and
-no RAM to store a pre-rendered page. Building the HTML fresh each time
-also means the stats are always current - there is no stale-cache
-problem to manage.
-
 ---
 
 ## Part 10 - What you can do next
