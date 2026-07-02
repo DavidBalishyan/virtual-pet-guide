@@ -15,7 +15,7 @@ The original dashboard used a meta tag to reload the entire page every three sec
 This works, but it has problems:
 
 - **White flash.** The browser tears down the old page and renders the new one. You see a blink on every refresh.
-- **Wasted bandwidth.** The browser re-downloads the CSS, the layout, the mood badge  everything  when only eight numbers have changed.
+- **Wasted bandwidth.** The browser re-downloads the CSS, the layout, the mood badge everything when only eight numbers have changed.
 - **No transitions.** The CSS `transition: width 0.3s` on the bars does nothing, because every refresh replaces the DOM from scratch.
 
 A real-time dashboard should update the numbers in place, leaving the rest of the page untouched. That is where WebSockets come in.
