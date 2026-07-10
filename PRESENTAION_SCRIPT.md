@@ -58,9 +58,9 @@ const SongNote SONG_ODE[] = {
 Adding a new song is three edits: a note table, one row in the song registry, and
 one button in the dashboard HTML.
 
-**Tests.** The project has a host test suite that compiles the real modules on my
-PC (not the device) using a stub `Arduino.h`. It's at 70 passing tests,
-including 9 I wrote for the song player.
+> **Tests.** The project has a host test suite that compiles the real modules on my
+> PC (not the device) using a stub `Arduino.h`. It's at 70 passing tests,
+> including 9 I wrote for the song player.
 
 ---
 
